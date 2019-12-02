@@ -1,0 +1,33 @@
+.functionBar{
+    width: 100px;
+    height: 100px;   
+}
+
+.numberPad{
+    width: 500px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+.numberButtons{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.number{
+    margin: 5%;
+    padding: 5%;
+}
+.operatorButtons{
+    display: grid;
+    grid-column: 1fr;
+}
+
+.operator{
+
+    margin-right: 60%;
+
+
+}
