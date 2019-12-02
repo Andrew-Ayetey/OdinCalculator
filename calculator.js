@@ -29,3 +29,33 @@ let operator = function(operate, value1, value2){
 
     }
 }
+
+//Equations
+let addNumber = function(string, number){
+    string += number
+}
+//Event Listeners
+
+let numbersButtons = document.querySelectorAll(".number")
+let numberButtonsArray = Array.from(numbersButtons)
+console.log(numberButtonsArray)
+
+let clickFunction = function(){
+    console.log("click")
+}
+
+for(var i = 0; i < numberButtonsArray.length; i++){
+    b = i
+    console.log(numberButtonsArray[i])
+    numberButtonsArray[i].addEventListener('click', e => {
+        console.log(numberButtonsArray[b])
+    })
+}
+
+
+
+
+
+
+
+
