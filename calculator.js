@@ -30,7 +30,7 @@ let operator = function(operate, value1, value2){
     }
 }
 
-//Equations
+//functions
 let addNumber = function(string, number){
     string += number
 }
@@ -38,18 +38,22 @@ let addNumber = function(string, number){
 
 let numbersButtons = document.querySelectorAll(".number")
 let numberButtonsArray = Array.from(numbersButtons)
-console.log(numberButtonsArray)
 
-let clickFunction = function(){
-    console.log("click")
-}
-
-for(var i = 0; i < numberButtonsArray.length; i++){
-    b = i
-    console.log(numberButtonsArray[i])
-    numberButtonsArray[i].addEventListener('click', e => {
-        console.log(numberButtonsArray[b])
+let numberDisplay = document.getElementById('displayPrimary')
+let numberDisplayValue = numberDisplay.innerHTML
+for(var i = 0; i < 10; i++){
+    numId= document.getElementById("number" + i)
+    let innerId = numId.innerHTML
+    numId.addEventListener('click', e => {
+        if( numberDisplay.innerHTML == 0){
+            numberDisplay.innerHTML = innerId
+        }
+        else{
+            numberDisplay.innerHTML += innerId
+            numberDisplayValue = numberDisplay.innerHTML
+        }
     })
+    
 }
 
 

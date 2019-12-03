@@ -45,6 +45,12 @@ border-radius: 5px;
     width: 1fr;
 }
 
+
+#number0{
+margin-left: 1fr;
+}
+
 .clear{
     width: 100%
 }
+
