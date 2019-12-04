@@ -38,7 +38,7 @@ border-radius: 5px;
     grid-column: 1fr;
 }
 
-.operator, .equals{
+.operator, .event{
 
     margin-right: 70%;
     border-right: 10%;
