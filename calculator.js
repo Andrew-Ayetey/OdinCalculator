@@ -14,16 +14,12 @@ let operatorFunction = function(operate, value1, value2){
     switch(operate){
     case "+":
         return addFunction(value1, value2)
-        break;
     case "-":
         return subtractFunction(value1, value2)
-        break;
     case "/":
         return divideFunction(value1, value2)
-        break;
     case "*":
         return multiplyFunction(value1, value2)
-        break;
     default:
         break;
 
@@ -96,6 +92,7 @@ for(var i = 0; i < 10; i++){
     numId= document.getElementById("number" + i)
     let innerId = numId.innerHTML
     numId.addEventListener('click', e => {
+
         if( numberDisplay.innerHTML == 0){
             numberDisplay.innerHTML = innerId
             numberDisplayValue = numberDisplay.innerHTML
@@ -116,21 +113,22 @@ for(var i = 0; i < operatorButtons.length; i++){
             return
         }
         else{
-            storageArray[storageArray.length] = numberDisplayValue
-            storageArray.push(operatorInstance.innerHTML)
-            console.log("number display is not 0")
-            numberDisplay.innerHTML = 0
+            storageArray = numberDisplayValue
+            
+            // storageArray.push(operatorInstance.innerHTML)
+            // console.log("number display is not 0")
+            numberDisplay.innerHTML += operatorInstance.innerHTML
             
         }
-        console.log(storageArray)
-        checkStorageArray(storageArray)
-        if(storageArray.length > 3){
-        CurrentOperation = new operation(storageArray[0],storageArray[1], storageArray[2])
-        operationsArray.push(CurrentOperation)
-        console.log(operationsArray)
-        console.log(CurrentOperation.operateMethod())
-        }
-        else{}
+        // console.log(storageArray)
+        // checkStorageArray(storageArray)
+        // if(storageArray.length > 3){
+        // CurrentOperation = new operation(storageArray[0],storageArray[1], storageArray[2])
+        // operationsArray.push(CurrentOperation)
+        // console.log(operationsArray)
+        // console.log(CurrentOperation.operateMethod())
+        // }
+        // else{}
 
         
 
