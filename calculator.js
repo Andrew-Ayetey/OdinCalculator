@@ -46,29 +46,6 @@ function operation(firstVariable, operator, secondVariable){
 
 }
 
-// function valueStorage(){
-//     var valueArray = []
-//     if(valueArray > 3){
-//         console.log("valueArray > 3")
-//         f
-//     }
-// }
-
-//functions
-// let addNumber = function(string, number){
-//     string += number
-// }
-
-// let newVariable = function(array){
-//     let list = array.length
-//     if(list == 0){
-//         return "Variable" + 1
-//     }
-//     else{
-//         return "Variable" + (list + 1)
-//     }
-// }
-
 let checkStorageArray = function(array){
     if(array.length > 3){
         console.log("array is greater than 3")
@@ -77,7 +54,7 @@ let checkStorageArray = function(array){
 //Elements and Variables
 
 let storageArray = []
-let operationsArray = []
+let operationsArray = ["+", "-", "/", "*"]
 
 let numbersButtons = document.querySelectorAll(".number")
 let numberButtonsArray = Array.from(numbersButtons)
@@ -86,20 +63,25 @@ let operatorButtons = document.querySelectorAll(".operator")
 
 let numberDisplay = document.getElementById('displayPrimary')
 let numberDisplayValue = numberDisplay.innerHTML
-let EqualsEvent = document.getElementById('equals')
+
+let equalsEvent = document.getElementById('equals')
+
+let clearEvent = document.querySelector('.clear')
+
 //Event Listeners
 for(var i = 0; i < 10; i++){
     numId= document.getElementById("number" + i)
     let innerId = numId.innerHTML
     numId.addEventListener('click', e => {
 
-        if( numberDisplay.innerHTML == 0){
+        if( numberDisplayValue == 0){
             numberDisplay.innerHTML = innerId
             numberDisplayValue = numberDisplay.innerHTML
         }
         else{
             numberDisplay.innerHTML += innerId
             numberDisplayValue = numberDisplay.innerHTML
+            storageArray = numberDisplayValue.split(" ")
         }
     })
     
@@ -112,29 +94,41 @@ for(var i = 0; i < operatorButtons.length; i++){
         if(numberDisplayValue == 0){
             return
         }
+        else if(operationsArray.includes(storageArray[storageArray.length - 1])){
+            return
+        }
         else{
-            storageArray = numberDisplayValue
             
-            // storageArray.push(operatorInstance.innerHTML)
-            // console.log("number display is not 0")
+            numberDisplay.innerHTML += " "        
             numberDisplay.innerHTML += operatorInstance.innerHTML
+            numberDisplay.innerHTML += " "
+            numberDisplayValue = numberDisplay.innerHTML
+            storageArray = numberDisplayValue.split(" ")
+            storageArray.pop()
+            
+
             
         }
-        // console.log(storageArray)
-        // checkStorageArray(storageArray)
-        // if(storageArray.length > 3){
-        // CurrentOperation = new operation(storageArray[0],storageArray[1], storageArray[2])
-        // operationsArray.push(CurrentOperation)
-        // console.log(operationsArray)
-        // console.log(CurrentOperation.operateMethod())
-        // }
-        // else{}
-
-        
 
     })
 }
 
+//clear
+clearEvent.addEventListener('click', e =>{
+    numberDisplay.innerHTML = 0
+    numberDisplayValue = 0
+})
+
+//equals
+equalsEvent.addEventListener('click', e =>{
+    if (numberDisplayValue == 0){
+        return
+    }
+    else{
+    numberDisplay.innerHTML = "Temp"
+    numberDisplayValue = 0
+    }
+})
 
 
 
