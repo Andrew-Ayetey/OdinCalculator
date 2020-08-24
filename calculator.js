@@ -29,12 +29,17 @@ let operatorFunction = function(operate, value1, value2){
 }
 
 function computeArray(storageArray){
+    if (storageArray.length < 3){
+        return
+    }
+    else{
     let firstVariable = Number(storageArray[0])
     console.log(firstVariable)
     let secondVariable = Number(storageArray[2])
     let operation = storageArray[1]
     let output = operatorFunction(operation, firstVariable, secondVariable)
     return output
+    }
 }
 
 function PEMDASparser(array){
@@ -48,31 +53,51 @@ function PEMDASparser(array){
             before.forEach(element => newArray.push(element))
             newArray.push(operatorFunction(array[i],array[i-1],array[i+1]))
             after.forEach(element => newArray.push(element))
-            console.log("Here the new Array is", newArray)
+            console.log("At Multiplication the new Array is", newArray)
+            array = newArray
         }
     
     }
-    array = newArray
+    
+    console.log("Divison: At Beginning The array is currently", array)
     for (i = 0; i < array.length; i++){
         if (array[i] == "/"){
             newArray = []
             let before = array.slice(0, i-1)
             let after = array.slice(i+2)
-            console.log(before, after)
+            
             before.forEach(element => newArray.push(element))
             newArray.push(operatorFunction(array[i],array[i-1],array[i+1]))
             after.forEach(element => newArray.push(element))
-            console.log("Here the new Array is", newArray)
+            console.log("At dviision end the new Array is", newArray)
+            array = newArray
         }
     }
-        array = newArray
+   
         for (i = 0; i < array.length; i++){
             if (array[i] == "+"){
                 console.log(operatorFunction(array[i],array[i-1], array[i+1]))
                 newArray = []
                 let before = array.slice(0, i-1)
                 let after = array.slice(i+2)
-                console.log(before, after)
+
+                before.forEach(element => newArray.push(element))
+                newArray.push(operatorFunction(array[i],array[i-1],array[i+1]))
+                after.forEach(element => newArray.push(element))
+                console.log("Here the new Array is", newArray)
+                array = newArray
+            }
+    
+    }
+
+
+ for (i = 0; i < array.length; i++){
+            if (array[i] == "-"){
+                console.log(operatorFunction(array[i],array[i-1], array[i+1]))
+                newArray = []
+                let before = array.slice(0, i-1)
+                let after = array.slice(i+2)
+
                 before.forEach(element => newArray.push(element))
                 newArray.push(operatorFunction(array[i],array[i-1],array[i+1]))
                 after.forEach(element => newArray.push(element))
@@ -80,32 +105,6 @@ function PEMDASparser(array){
             }
     
     }
-
-
-//     for (i = 0; i < array.length; i++){
-//         if (array[i] == "/"){
-//             console.log(i)
-//             console.log(array[i-1], array[i+1])
-//             newArray.push(array[i], array[i+1])
-//         }
-    
-// }
-// for (i = 0; i < array.length; i++){
-//     if (array[i] == "+"){
-//         console.log(i)
-//         console.log(array[i-1], array[i+1])
-//         newArray.push(array[i], array[i+1])
-//     }
-
-// }
-// for (i = 0; i < array.length; i++){
-// if (array[i] == "-"){
-//     console.log(i)
-//     console.log(array[i-1], array[i+1])
-//     newArray.push(array[i], array[i+1])
-// }
-
-// }
 console.log(newArray)
     return newArray
     
@@ -217,23 +216,25 @@ equalsEvent.addEventListener('click', e =>{
             return
         }
         else{
-            
-            storageArray = PEMDASparser(storageArray)
-            while(storageArray.length > 3){
-                //Change below, Display should not do work functions ought to.
-                let newValue = computeArray(storageArray.slice(0,3))
-                
-                storageArray.shift()
-                storageArray.shift()
-                storageArray.shift()
-                storageArray.unshift(Number(newValue))
-                historyArray.push(storageArray)
+            historyArray.push(storageArray)
 
-            }
-            let output = computeArray(storageArray)
+            storageArray = PEMDASparser(storageArray)
+            
+            // while(storageArray.length > 3){
+            //     //Change below, Display should not do work functions ought to.
+            //     let newValue = computeArray(storageArray.slice(0,3))
+                
+            //     storageArray.shift()
+            //     storageArray.shift()
+            //     storageArray.shift()
+            //     storageArray.unshift(Number(newValue))
+            //     historyArray.push(storageArray)
+
+            // }
+            let output = storageArray
             numberDisplay.innerHTML = output
             numberDisplayValue = "" + output
-            historyArray.push(storageArray)
+            
             historyArray.push(output)
         }
     }
