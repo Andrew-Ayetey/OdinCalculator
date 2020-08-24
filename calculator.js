@@ -10,7 +10,13 @@ let multiplyFunction = function(x, y){
     return x * y
 }
 let divideFunction = function(x, y){
+    if (y == 0){
+        window.alert("You can't divide by zero, are you trying to kill us all!")
+        return 0
+    }
+    else {
     return x / y
+    }
 } 
 let operatorFunction = function(operate, value1, value2){
     switch(operate){
