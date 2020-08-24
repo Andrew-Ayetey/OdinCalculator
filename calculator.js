@@ -139,6 +139,7 @@ let checkStorageArray = function(array){
 let storageArray = []
 let historyArray = []
 let operationsArray = ["+", "-", "/", "*"]
+let firstEntry = new Boolean(true)
 
 let numbersButtons = document.querySelectorAll(".number")
 let numberButtonsArray = Array.from(numbersButtons)
@@ -158,9 +159,14 @@ for(var i = 0; i < 10; i++){
     let innerId = numId.innerHTML
     numId.addEventListener('click', e => {
 
-        if( numberDisplayValue == 0){
+        if( numberDisplayValue == 0 && firstEntry == true){
             numberDisplay.innerHTML = innerId
             numberDisplayValue = numberDisplay.innerHTML
+        }
+        else if (numberDisplayValue == historyArray[historyArray.length - 1]){
+            numberDisplay.innerHTML = innerId
+            numberDisplayValue = numberDisplay.innerHTML
+            console.log("System recognizes the current number equals the output of previous number")
         }
         else{
             numberDisplay.innerHTML += innerId
@@ -217,6 +223,7 @@ equalsEvent.addEventListener('click', e =>{
         }
         else{
             historyArray.push(storageArray)
+            firstEntry = false
 
             storageArray = PEMDASparser(storageArray)
             
