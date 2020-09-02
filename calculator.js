@@ -216,6 +216,7 @@ clearEvent.addEventListener('click', e =>{
     numberDisplay.innerHTML = 0
     numberDisplayValue = 0
     storageArray = []
+    firstEntry = true
 })
 
 //equals
