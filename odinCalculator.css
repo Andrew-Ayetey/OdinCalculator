@@ -1,8 +1,8 @@
 .functionBar{
     display: grid;
     margin: 0%;
-    width: 300px;
-    height: 50px;
+    width: 25vw;
+    height: 5vw;
     text-align: right;
 
 
@@ -16,7 +16,7 @@ border-radius: 5px;
 }
 
 .numberPad{
-    width: 500px;
+    width: 40vw;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
@@ -33,6 +33,7 @@ border-radius: 5px;
     padding: 5%;
 }
 .operatorButtons{
+    margin-top: 1.5%;
     display: grid;
     padding-left: 1fr;
     grid-column: 1fr;
@@ -62,10 +63,15 @@ margin-left: 1fr;
 
 div.functionBar{
     margin-right: 20%;
+    margin-bottom: 1rem;
 }
 
 div.row{
     width: 30vw;
     height: 15vw;
     margin-top: 10vw;
+}
+
+html, body {
+    height: 100%;
 }
