@@ -115,6 +115,18 @@ console.log(newArray)
     return newArray
     
 }
+
+
+function PEMDASloop(array){
+    newArray = array
+    while(newArray.length > 1){
+        newArray = PEMDASparser(newArray)
+            
+    };
+    return newArray;
+}
+
+
 //objects
 function operation(firstVariable, operator, secondVariable){
     operationsList = ["+", "-", "/", "*"]
@@ -232,19 +244,7 @@ equalsEvent.addEventListener('click', e =>{
             historyArray.push(storageArray)
             firstEntry = false
 
-            storageArray = PEMDASparser(storageArray)
-            
-            // while(storageArray.length > 3){
-            //     //Change below, Display should not do work functions ought to.
-            //     let newValue = computeArray(storageArray.slice(0,3))
-                
-            //     storageArray.shift()
-            //     storageArray.shift()
-            //     storageArray.shift()
-            //     storageArray.unshift(Number(newValue))
-            //     historyArray.push(storageArray)
-
-            // }
+            storageArray = PEMDASloop(storageArray)
             let output = storageArray
             numberDisplay.innerHTML = output
             numberDisplayValue = "" + output
